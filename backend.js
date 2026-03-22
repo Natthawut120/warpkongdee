@@ -203,6 +203,14 @@ function setupTheme() {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         btn.innerHTML = theme === 'light' ? '☀️' : '🌙'; // เปลี่ยนไอคอน
+        
+        // อัปเดตสี Meta Theme Color ให้แถบ Browser เปลี่ยนสีตาม
+        const themeMeta = document.getElementById('theme-color-meta');
+        if (themeMeta) {
+            // ถ้าเป็น Dark Mode ใช้สีเข้ม (#1a0b36 คือสีหลักของ bg-body), ถ้า Light Mode ใช้สีขาว
+            const metaColor = theme === 'light' ? '#ffffff' : '#1a0b36';
+            themeMeta.setAttribute('content', metaColor);
+        }
     };
 
     // 3. ตรวจสอบค่าเริ่มต้น (จากที่เคยบันทึกไว้ หรือ จากการตั้งค่าของเครื่อง)
@@ -223,26 +231,5 @@ function setupTheme() {
         applyTheme(current === 'light' ? 'dark' : 'light');
     };
 }
-
-// ตัวอย่างโค้ด JavaScript สำหรับใส่ในไฟล์ backend.js
-// หรือนำไปแทรกในฟังก์ชันเปลี่ยน Theme ของคุณ
-
-function updateThemeColor(isDarkMode) {
-    const themeMeta = document.getElementById('theme-color-meta');
-
-    if (themeMeta) {
-        // ถ้าเป็น Dark Mode ให้แถบ Browser เป็นสีเข้ม (สีเดียวกับ bg-body)
-        if (isDarkMode) {
-            themeMeta.setAttribute('content', '#1a0b36'); // ปรับสีนี้ให้ตรงกับสีเข้มสุดของพื้นหลังคุณ
-        } else {
-            // ถ้าเป็น Light Mode ให้เป็นสีขาว
-            themeMeta.setAttribute('content', '#ffffff');
-        }
-    }
-}
-
-// ตัวอย่างการใช้งาน: เรียกฟังก์ชันนี้ตอนกดปุ่มเปลี่ยนโหมด
-// updateThemeColor(true);  // เมื่อเข้าสู่ Dark Mode
-// updateThemeColor(false); // เมื่อเข้าสู่ Light Mode
 
 init();
