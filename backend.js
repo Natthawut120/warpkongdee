@@ -207,8 +207,8 @@ function setupTheme() {
         // อัปเดตสี Meta Theme Color ให้แถบ Browser เปลี่ยนสีตาม
         const themeMeta = document.getElementById('theme-color-meta');
         if (themeMeta) {
-            // ถ้าเป็น Dark Mode ใช้สีเข้ม (#1a0b36 คือสีหลักของ bg-body), ถ้า Light Mode ใช้สีขาว
-            const metaColor = theme === 'light' ? '#ffffff' : '#1a0b36';
+            // ปรับสี Dark Mode ให้เป็น #270e52 (สีม่วงเข้ม) ให้เข้ากับ Gradient ด้านบนสุดของเว็บ
+            const metaColor = theme === 'light' ? '#f3f4f6' : '#270e52';
             themeMeta.setAttribute('content', metaColor);
         }
     };
