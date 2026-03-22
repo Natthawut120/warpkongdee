@@ -16,8 +16,8 @@
 
 [data-theme="light"] {
     --bg-body: radial-gradient(circle at 10% 20%, #f3f4f6 0%, #d1d5db 90%);
-    --glass-bg: rgba(255, 255, 255, 0.65);
-    --glass-border: rgba(255, 255, 255, 0.8);
+    --glass-bg: rgba(255, 255, 255, 0.25); /* ปรับให้โปร่งใสขึ้นเหมือน Dark Mode */
+    --glass-border: rgba(255, 255, 255, 0.5); /* ลดความหนาของสีขอบลง */
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
     --primary-accent: #0051ff;
     --text-color: #111827;
@@ -36,8 +36,10 @@
 body {
     color: var(--text-color);
     min-height: 100vh;
+    min-height: 100dvh; /* ใช้ dvh เพื่อแก้ปัญหาความสูงบน Browser มือถือ */
     overflow-x: hidden;
     position: relative;
+    padding-bottom: env(safe-area-inset-bottom); /* กันเนื้อหาจมทับกับขีด Home ด้านล่าง */
 }
 
 /* สร้างพื้นหลังใหม่ที่รองรับมือถือได้ดีกว่า */
@@ -47,7 +49,7 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh; /* ปรับพื้นหลังให้เต็มจอพอดีกับ dvh */
     background: var(--bg-body);
     z-index: -2; /* ให้ไปอยู่หลังสุด หลัง Blob อีกที */
 }
