@@ -1,12 +1,29 @@
 :root {
+    /* Dark Mode (Default) */
+    --bg-body: radial-gradient(circle at 10% 20%, rgb(39, 14, 82) 0%, rgb(0, 0, 0) 90%);
     --glass-bg: rgba(255, 255, 255, 0.08);
     --glass-border: rgba(255, 255, 255, 0.25);
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     --primary-accent: #00f2ff;
     --text-color: #ffffff;
+    --text-muted: #ccc;
+    --heading-gradient: linear-gradient(to right, #fff, #aaa);
+    --modal-bg: rgba(30, 30, 40, 0.7);
     --blur-strength: 30px;
     --radius-xl: 30px;
     --radius-md: 20px;
+}
+
+[data-theme="light"] {
+    --bg-body: radial-gradient(circle at 10% 20%, #f3f4f6 0%, #d1d5db 90%);
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    --primary-accent: #0051ff;
+    --text-color: #111827;
+    --text-muted: #4b5563;
+    --heading-gradient: linear-gradient(to right, #111827, #4b5563);
+    --modal-bg: rgba(255, 255, 255, 0.9);
 }
 
 * {
@@ -17,7 +34,7 @@
 }
 
 body {
-    background: radial-gradient(circle at 10% 20%, rgb(39, 14, 82) 0%, rgb(0, 0, 0) 90%);
+    background: var(--bg-body);
     color: var(--text-color);
     min-height: 100vh;
     overflow-x: hidden;
@@ -88,7 +105,7 @@ h1 {
     font-size: 3rem;
     letter-spacing: 2px;
     margin-bottom: 10px;
-    background: linear-gradient(to right, #fff, #aaa);
+    background: var(--heading-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -108,7 +125,7 @@ h1 {
     backdrop-filter: blur(var(--blur-strength));
     -webkit-backdrop-filter: blur(var(--blur-strength));
     border: 1px solid var(--glass-border);
-    color: white;
+    color: var(--text-color);
     padding: 12px 24px;
     border-radius: 50px;
     cursor: pointer;
@@ -191,7 +208,7 @@ h1 {
 }
 
 .card-info p {
-    color: #ccc;
+    color: var(--text-muted);
     font-size: 0.9rem;
     margin-bottom: 15px;
 }
@@ -229,7 +246,7 @@ h1 {
 }
 
 .modal-content {
-    background: rgba(30, 30, 40, 0.7);
+    background: var(--modal-bg);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     width: 90%;
@@ -278,7 +295,7 @@ h1 {
 
 .modal-desc {
     line-height: 1.6;
-    color: #ddd;
+    color: var(--text-muted);
     margin-bottom: 20px;
 }
 
@@ -319,7 +336,7 @@ h1 {
 .close-btn {
     flex: 1;
     background: rgba(255, 255, 255, 0.1);
-    color: white;
+    color: var(--text-color);
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 14px;
     border-radius: 15px;
@@ -373,4 +390,32 @@ h1 {
 
 .prev-btn {
     left: 10px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1);
+    background: var(--primary-accent);
+    color: #fff;
 }
