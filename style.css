@@ -39,6 +39,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    background-attachment: fixed; /* สำคัญ: ทำให้พื้นหลังนิ่งไม่ขยับตาม Address Bar มือถือ */
 }
 
 /* Background Blobs for Liquid Effect */
