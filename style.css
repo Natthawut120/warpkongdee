@@ -34,12 +34,22 @@
 }
 
 body {
-    background: var(--bg-body);
     color: var(--text-color);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    background-attachment: fixed; /* สำคัญ: ทำให้พื้นหลังนิ่งไม่ขยับตาม Address Bar มือถือ */
+}
+
+/* สร้างพื้นหลังใหม่ที่รองรับมือถือได้ดีกว่า */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-body);
+    z-index: -2; /* ให้ไปอยู่หลังสุด หลัง Blob อีกที */
 }
 
 /* Background Blobs for Liquid Effect */
