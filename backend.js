@@ -76,6 +76,7 @@ let currentModalIndex = 0;
 
 // Initialize
 function init() {
+    setupTheme(); // เพิ่มฟังก์ชันจัดการธีม
     renderCategories();
     renderProducts('All');
     startSlideshow();
@@ -189,5 +190,38 @@ function closeModal() {
 modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
 });
+
+// Theme System Logic
+function setupTheme() {
+    // 1. สร้างปุ่ม Toggle
+    const btn = document.createElement('button');
+    btn.className = 'theme-toggle-btn';
+    document.body.appendChild(btn);
+
+    // 2. ฟังก์ชันตรวจสอบและบันทึกธีม
+    const applyTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        btn.innerHTML = theme === 'light' ? '☀️' : '🌙'; // เปลี่ยนไอคอน
+    };
+
+    // 3. ตรวจสอบค่าเริ่มต้น (จากที่เคยบันทึกไว้ หรือ จากการตั้งค่าของเครื่อง)
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    
+    let initialTheme = 'dark';
+    if (savedTheme) {
+        initialTheme = savedTheme;
+    } else if (systemPrefersLight) {
+        initialTheme = 'light';
+    }
+    applyTheme(initialTheme);
+
+    // 4. เมื่อกดปุ่ม
+    btn.onclick = () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        applyTheme(current === 'light' ? 'dark' : 'light');
+    };
+}
 
 init();
