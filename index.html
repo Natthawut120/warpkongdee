@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warp - The Future Store</title>
+    
+    
+    <meta name="description" content="รวมรีวิวและพิกัดสินค้า Gadget ล้ำสมัย สไตล์ Futuristic แนะนำอุปกรณ์ไอที ของแต่งบ้าน และแฟชั่นแห่งอนาคตที่คุณห้ามพลาด">
+    <meta name="keywords" content="Gadget, สินค้าไอที, รีวิวสินค้า, ของแต่งบ้านล้ำๆ, แฟชั่นอนาคต, Affiliate">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="iGlass Store - แหล่งรวมสินค้าแห่งอนาคต">
+    <meta property="og:description" content="เปิดประสบการณ์ช้อปปิ้งสินค้า Gadget และ Lifestyle ล้ำยุค ในรูปแบบ Liquid Glass">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=1200&q=80">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="container">
+        <header>
+            <h1>Warp</h1>
+            <p>วาร์ปพิกัดไอเทมที่คุณอาจชอบ</p>
+        </header>
+
+        <!-- Categories -->
+        <div class="categories" id="categoryContainer">
+            <!-- Buttons will be injected here by JS -->
+        </div>
+
+        <!-- Products -->
+        <div class="product-grid" id="productGrid">
+            <!-- Cards will be injected here by JS -->
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-img-container">
+                <button class="modal-nav-btn prev-btn" onclick="changeModalImage(-1)">&#10094;</button>
+                <img src="" alt="Product Detail" class="modal-img" id="modalImg">
+                
+            </div>
+            <div class="modal-details">
+                <h2 id="modalTitle">Product Title</h2>
+                <p class="price-tag" id="modalPrice">$0.00</p>
+                <p class="modal-desc" id="modalDesc">Description goes here...</p>
+                
+                <div class="modal-buttons">
+                    <a href="#" target="_blank" class="buy-btn" id="modalLink">สั่งซื้อ</a>
+                    <button class="close-btn" onclick="closeModal()">ปิดหน้าต่าง</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="backend.js"></script>
+</body>
+</html>
