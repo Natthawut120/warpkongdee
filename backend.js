@@ -224,4 +224,25 @@ function setupTheme() {
     };
 }
 
+// ตัวอย่างโค้ด JavaScript สำหรับใส่ในไฟล์ backend.js
+// หรือนำไปแทรกในฟังก์ชันเปลี่ยน Theme ของคุณ
+
+function updateThemeColor(isDarkMode) {
+    const themeMeta = document.getElementById('theme-color-meta');
+
+    if (themeMeta) {
+        // ถ้าเป็น Dark Mode ให้แถบ Browser เป็นสีเข้ม (สีเดียวกับ bg-body)
+        if (isDarkMode) {
+            themeMeta.setAttribute('content', '#1a0b36'); // ปรับสีนี้ให้ตรงกับสีเข้มสุดของพื้นหลังคุณ
+        } else {
+            // ถ้าเป็น Light Mode ให้เป็นสีขาว
+            themeMeta.setAttribute('content', '#ffffff');
+        }
+    }
+}
+
+// ตัวอย่างการใช้งาน: เรียกฟังก์ชันนี้ตอนกดปุ่มเปลี่ยนโหมด
+// updateThemeColor(true);  // เมื่อเข้าสู่ Dark Mode
+// updateThemeColor(false); // เมื่อเข้าสู่ Light Mode
+
 init();
