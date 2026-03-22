@@ -12,6 +12,7 @@
     --blur-strength: 30px;
     --radius-xl: 30px;
     --radius-md: 20px;
+    --bg-fallback: #1a0b36; /* สีพื้นหลังสำรองสำหรับ html (กันแถบขาว) */
 }
 
 [data-theme="light"] {
@@ -24,6 +25,7 @@
     --text-muted: #4b5563;
     --heading-gradient: linear-gradient(to right, #111827, #4b5563);
     --modal-bg: rgba(255, 255, 255, 0.9);
+    --bg-fallback: #f3f4f6;
 }
 
 * {
@@ -31,6 +33,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+    background-color: var(--bg-fallback); /* แก้ปัญหาแถบขาวด้านล่างเวลาเลื่อนสุดจอ */
+    height: 100%;
 }
 
 body {
@@ -49,7 +56,7 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100dvh; /* ปรับพื้นหลังให้เต็มจอพอดีกับ dvh */
+    height: 100vh; /* ใช้ vh ธรรมดาเพื่อความเสถียรใน layer หลังสุด */
     background: var(--bg-body);
     z-index: -2; /* ให้ไปอยู่หลังสุด หลัง Blob อีกที */
 }
@@ -103,6 +110,7 @@ body::before {
 /* Layout */
 .container {
     max-width: 1200px;
+    width: 100%; /* บังคับให้ใช้ความกว้างเต็มที่ */
     margin: 0 auto;
     padding: 40px 20px;
 }
@@ -158,6 +166,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
+    justify-content: center; /* จัดสินค้าให้อยู่กึ่งกลางหน้าจอเสมอ (แก้ปัญหาหน้าเบี้ยวบนมือถือ) */
 }
 
 /* Product Card (Glass Style) */
